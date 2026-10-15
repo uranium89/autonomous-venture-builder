@@ -5,14 +5,15 @@
 2. Claude Code loads `CLAUDE.md` and the subagents in `.claude/agents/` automatically. Run `/agents` to confirm all three are listed.
 
 ## Prompts
-**1. Studio setup** (once):
+**1. Kickoff** (once per studio):
 ```
-Set up the studio as defined in CLAUDE.md.
-Invoke the venture-scout as a subagent to run the thesis interview.
-Ask me the questions and wait for my answers, then show me studio/THESIS.md.
+Kick off the venture studio. [OPTIONAL: what interests you, or an idea you already have, in your own words.]
+Act as the orchestrator defined in CLAUDE.md and run Studio Setup, then a first Discover run.
+Invoke each agent as a subagent, one at a time.
+Ask me the thesis interview questions and wait for my answers. Then run Discover and show me studio/THESIS.md, the portfolio and the gate briefs.
 ```
 
-**2. Discover run** (find new ideas):
+**2. Discover run** (later, to find more ideas):
 ```
 Run Discover as defined in CLAUDE.md.
 Invoke each agent as a subagent, one at a time.
@@ -46,7 +47,7 @@ DEC-NNN: A
 ## How Discover runs
 
 ```
-Studio setup (once): thesis interview -> studio/THESIS.md
+Kickoff (once): thesis interview -> studio/THESIS.md -> first Discover run
 Discover run:
   venture-scout: source ideas -> screen -> shortlist
   for each shortlisted venture:

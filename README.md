@@ -29,7 +29,7 @@ Pick your tool, then copy the contents of its `dist/` folder, including hidden f
 mkdir ~/my-studio && cp -R dist/claude/. ~/my-studio/ && cd ~/my-studio && git init
 ```
 
-Then open your tool there and follow `studio/README.md`. The Claude Code layout:
+Then open your tool there and run the Kickoff prompt below. The Claude Code layout:
 
 ```
 my-studio/
@@ -43,6 +43,45 @@ my-studio/
     ├── decisions/            Go / Park / Kill briefs waiting for you
     └── ventures/V-NNN-slug/  idea.md, market.md, finance.md, thesis.md
 ```
+
+## Quick start
+
+After copying, open your tool in the studio folder and paste the prompts below. The examples are for Claude Code; for other tools, swap the rules file and the "invoke" line using the table. Full instructions per tool: [Claude Code](dist/claude/studio/README.md), [Codex](dist/codex/studio/README.md), [Cursor](dist/cursor/studio/README.md), [OpenCode](dist/opencode/studio/README.md), [Antigravity](dist/antigravity/studio/README.md).
+
+**1. Kickoff** (once per studio):
+```
+Kick off the venture studio. [OPTIONAL: what interests you, or an idea you already have, in your own words.]
+Act as the orchestrator defined in CLAUDE.md and run Studio Setup, then a first Discover run.
+Invoke each agent as a subagent, one at a time.
+Ask me the thesis interview questions and wait for my answers. Then run Discover and show me studio/THESIS.md, the portfolio and the gate briefs.
+```
+
+**2. Discover run** (later, to find more ideas):
+```
+Run Discover as defined in CLAUDE.md.
+Invoke each agent as a subagent, one at a time.
+Stop when every shortlisted venture has a gate brief, then show me the portfolio and the briefs.
+```
+
+**3. Check one idea**:
+```
+check: [YOUR IDEA, in your own words]
+```
+
+**4. Answer a brief**:
+```
+DEC-NNN: A
+```
+
+| Tool | Rules file | Invoke line |
+|---|---|---|
+| Claude Code | `CLAUDE.md` | Invoke each agent as a subagent, one at a time. |
+| OpenAI Codex | `AGENTS.md` | Spawn a subagent for each step, one at a time, and wait for it to finish. |
+| Cursor | `.cursor/rules/ai-studio.mdc` | Invoke each agent with its slash command (/venture-scout, /market-analyst, /finance-analyst), one at a time. |
+| OpenCode | `AGENTS.md` | Invoke each subagent via the Task tool, one at a time. |
+| Google Antigravity | `AGENTS.md` | Use invoke_subagent for each step, one at a time. |
+
+As the stakeholder, you only answer the thesis interview, choose Go / Park / Kill in gate briefs (`studio/decisions/`), and read the portfolio and each venture's `thesis.md`.
 
 ## Repository layout
 

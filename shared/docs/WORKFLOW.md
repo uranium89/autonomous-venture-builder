@@ -15,7 +15,7 @@
 ## How Discover runs
 
 ```
-Studio setup (once): thesis interview -> studio/THESIS.md
+Kickoff (once): thesis interview -> studio/THESIS.md -> first Discover run
 Discover run:
   venture-scout: source ideas -> screen -> shortlist
   for each shortlisted venture:

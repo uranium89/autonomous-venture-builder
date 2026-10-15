@@ -57,6 +57,8 @@ The **stakeholder** is the human user. They set the studio thesis, choose option
    - What kind of business do you want: subscription software, one-time sales, services, marketplace? Any revenue goal?
    Record the answers in `studio/THESIS.md`. If unattended, keep the defaults already in the file and mark changed or unknown fields `UNKNOWN`.
 
+**Kickoff**: when the stakeholder asks to kick off the studio, run Studio Setup, then a Discover run. If they named an idea, treat it as a quick check (below); if they named interests only, use them when sourcing.
+
 ## Discover Workflow
 
 ```

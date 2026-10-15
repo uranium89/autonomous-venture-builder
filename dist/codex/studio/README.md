@@ -5,14 +5,15 @@
 2. Start Codex in the folder; the custom agents in `.codex/agents/` are picked up automatically.
 
 ## Prompts
-**1. Studio setup** (once):
+**1. Kickoff** (once per studio):
 ```
-Set up the studio as defined in AGENTS.md.
-Invoke the venture-scout as a subagent to run the thesis interview.
-Ask me the questions and wait for my answers, then show me studio/THESIS.md.
+Kick off the venture studio. [OPTIONAL: what interests you, or an idea you already have, in your own words.]
+Act as the orchestrator defined in AGENTS.md and run Studio Setup, then a first Discover run.
+Spawn a subagent for each step, one at a time, and wait for it to finish.
+Ask me the thesis interview questions and wait for my answers. Then run Discover and show me studio/THESIS.md, the portfolio and the gate briefs.
 ```
 
-**2. Discover run** (find new ideas):
+**2. Discover run** (later, to find more ideas):
 ```
 Run Discover as defined in AGENTS.md.
 Spawn a subagent for each step, one at a time, and wait for it to finish.
@@ -46,7 +47,7 @@ DEC-NNN: A
 ## How Discover runs
 
 ```
-Studio setup (once): thesis interview -> studio/THESIS.md
+Kickoff (once): thesis interview -> studio/THESIS.md -> first Discover run
 Discover run:
   venture-scout: source ideas -> screen -> shortlist
   for each shortlisted venture:

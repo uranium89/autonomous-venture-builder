@@ -5,14 +5,15 @@
 2. Open the folder in Cursor. The rules file applies automatically and the agents appear as `/venture-scout`, `/market-analyst`, `/finance-analyst`.
 
 ## Prompts
-**1. Studio setup** (once):
+**1. Kickoff** (once per studio):
 ```
-Set up the studio as defined in .cursor/rules/ai-studio.mdc.
-Invoke /venture-scout to run the thesis interview.
-Ask me the questions and wait for my answers, then show me studio/THESIS.md.
+Kick off the venture studio. [OPTIONAL: what interests you, or an idea you already have, in your own words.]
+Act as the orchestrator defined in .cursor/rules/ai-studio.mdc and run Studio Setup, then a first Discover run.
+Invoke each agent with its slash command (/venture-scout, /market-analyst, /finance-analyst), one at a time.
+Ask me the thesis interview questions and wait for my answers. Then run Discover and show me studio/THESIS.md, the portfolio and the gate briefs.
 ```
 
-**2. Discover run** (find new ideas):
+**2. Discover run** (later, to find more ideas):
 ```
 Run Discover as defined in .cursor/rules/ai-studio.mdc.
 Invoke each agent with its slash command (/venture-scout, /market-analyst, /finance-analyst), one at a time.
