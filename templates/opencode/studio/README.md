@@ -33,6 +33,6 @@ DEC-NNN: A
 {{include shared/docs/WORKFLOW.md}}
 
 ## OpenCode notes
-- Agents use `anthropic/claude-opus-5-5`. Change `model:` in `.opencode/agents/*.md` to use another provider.
+- Agents use `anthropic/claude-opus-5-5`. Change `model:` in `.opencode/agents/*.md` to use another provider; giving `skeptic` a model from a different vendor (for example an OpenAI model) is recommended.
 - Each agent allows `webfetch` and `websearch`, and only read-only shell commands. Depending on your OpenCode version and provider, `websearch` may need to be enabled separately; check the OpenCode docs if the agents report it missing.
 - Permissions use the key-value format. Newer OpenCode versions also accept a list format; convert if yours requires it. Bash rules use last-match-wins.

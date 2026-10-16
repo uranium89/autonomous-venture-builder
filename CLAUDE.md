@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-Templates for an AI venture studio (venture-scout, market-analyst, finance-analyst) working for a non-technical stakeholder. Only the Discover stage is implemented; Validate, Build, Launch and Measure are planned, and Build will hand ventures to https://github.com/uranium89/ai-scrum-team. The workflow rules live in `shared/RULES.md`; this file is about maintaining the templates, not running the studio.
+Templates for an AI venture studio (venture-scout, market-analyst, finance-analyst, skeptic) working for a non-technical stakeholder. Only the Discover stage is implemented; Validate, Build, Launch and Measure are planned, and Build will hand ventures to https://github.com/uranium89/ai-scrum-team. The workflow rules live in `shared/RULES.md`; this file is about maintaining the templates, not running the studio.
 
 ## Commands
 

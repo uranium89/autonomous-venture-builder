@@ -34,5 +34,5 @@ DEC-NNN: A
 
 ## Codex notes
 - **Web search is required.** Start Codex with live web search, for example `codex --search`, or set `web_search = "live"` in `~/.codex/config.toml`. These option names come from community guides; check the official Codex config reference if they don't work.
-- All three agents use `model_reasoning_effort = "high"` and inherit the session's model. Pin one with `model = "..."` in the agent's TOML file.
+- All four agents use `model_reasoning_effort = "high"` and inherit the session's model. Pin one with `model = "..."` in the agent's TOML file. If the venture-scout runs on Claude elsewhere, Codex is a good place to run the skeptic.
 - Subagents inherit the parent's sandbox and approval policy. Write zones are enforced only by the instructions.

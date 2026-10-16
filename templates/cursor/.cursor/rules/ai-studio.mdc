@@ -1,9 +1,9 @@
 ---
-description: AI venture studio rules (venture-scout, market-analyst, finance-analyst)
+description: AI venture studio rules (venture-scout, market-analyst, finance-analyst, skeptic)
 alwaysApply: true
 ---
 
 {{include shared/RULES.md}}
 
 ## Orchestration (Cursor)
-- The roles are subagents in `.cursor/agents/*.md`. Invoke them explicitly with `/venture-scout`, `/market-analyst`, `/finance-analyst`, following the Orchestrator rules above.
+- The roles are subagents in `.cursor/agents/*.md`. Invoke them explicitly with `/venture-scout`, `/market-analyst`, `/finance-analyst`, `/skeptic`, following the Orchestrator rules above.

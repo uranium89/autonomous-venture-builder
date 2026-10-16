@@ -8,7 +8,7 @@ DISCOVER -> VALIDATE -> BUILD -> LAUNCH -> MEASURE -> (KILL | PIVOT | SCALE)
 
 | Stage | What happens | Status |
 |---|---|---|
-| Discover | venture-scout sources and screens ideas; market-analyst and finance-analyst research each shortlisted one with cited sources; you get a scorecard and a Go / Park / Kill brief | **Available** |
+| Discover | venture-scout sources and screens ideas; market-analyst and finance-analyst research each shortlisted one with cited sources; skeptic checks the sources and re-scores it; you get a scorecard and a Go / Park / Kill brief | **Available** |
 | Validate | Cheap experiments with real people against kill thresholds set in advance | Planned |
 | Build | A validated venture gets its own repository with the AI Scrum Team | Planned |
 | Launch, Measure | Release, channels, metrics, Kill / Pivot / Scale decisions | Planned |
@@ -34,7 +34,7 @@ Then open your tool there and run the Kickoff prompt below. The Claude Code layo
 ```
 my-studio/
 ├── CLAUDE.md / AGENTS.md     rules and orchestration (tool-specific)
-├── .claude/agents/ ...       venture-scout, market-analyst, finance-analyst (tool-specific)
+├── .claude/agents/ ...       venture-scout, market-analyst, finance-analyst, skeptic (tool-specific)
 └── studio/
     ├── README.md             prompts and how-to
     ├── THESIS.md             what the studio looks for (you own it)
@@ -77,7 +77,7 @@ DEC-NNN: A
 |---|---|---|
 | Claude Code | `CLAUDE.md` | Invoke each agent as a subagent, one at a time. |
 | OpenAI Codex | `AGENTS.md` | Spawn a subagent for each step, one at a time, and wait for it to finish. |
-| Cursor | `.cursor/rules/ai-studio.mdc` | Invoke each agent with its slash command (/venture-scout, /market-analyst, /finance-analyst), one at a time. |
+| Cursor | `.cursor/rules/ai-studio.mdc` | Invoke each agent with its slash command (/venture-scout, /market-analyst, /finance-analyst, /skeptic), one at a time. |
 | OpenCode | `AGENTS.md` | Invoke each subagent via the Task tool, one at a time. |
 | Google Antigravity | `AGENTS.md` | Use invoke_subagent for each step, one at a time. |
 

@@ -28,8 +28,9 @@ The **stakeholder** is the human user. They set the studio thesis, choose option
 | venture-scout | strong | studio thesis interview, idea sourcing and screening, venture thesis, scorecard, gate briefs, portfolio | `studio/THESIS.md`, `studio/ideas/`, `studio/ventures/*/idea.md`, `studio/ventures/*/thesis.md`, `studio/decisions/`, `studio/PORTFOLIO.md` |
 | market-analyst | strong | customer, problem evidence, competitors, market size, channels, failure reasons | `studio/ventures/*/market.md` |
 | finance-analyst | strong | pricing, unit economics, cost to build and run, budget, kill thresholds | `studio/ventures/*/finance.md` |
+| skeptic | strong | challenging the thesis: checking key sources, re-scoring, finding counter-evidence | `studio/ventures/*/challenge.md` |
 
-"Strong" means the most capable model available. Research and judgment are the whole job here, so every Discover agent runs on it.
+"Strong" means the most capable model available. Research and judgment are the whole job here, so every Discover agent runs on it. If possible, run `skeptic` on a model from a different vendor than the venture-scout, so they don't share blind spots.
 
 ## Hard Limits (all agents, no exceptions)
 - NEVER spend money, sign up for paid services, buy domains or run ads.
@@ -57,7 +58,7 @@ The **stakeholder** is the human user. They set the studio thesis, choose option
 ## Discover Workflow
 
 ```
-SOURCE -> SCREEN -> (per shortlisted idea) MARKET -> FINANCE -> THESIS + SCORECARD -> GATE BRIEF -> PORTFOLIO
+SOURCE -> SCREEN -> (per shortlisted idea) MARKET -> FINANCE -> THESIS + SCORECARD -> CHALLENGE -> GATE BRIEF -> PORTFOLIO
 ```
 
 1. **Source** (venture-scout): if the stakeholder gave an idea, use it. Otherwise generate candidates (default 10) that fit `studio/THESIS.md`, using public signals: complaints in forums and reviews, fast-growing search terms, job posts that reveal manual work, regulation changes, new AI capabilities that make a costly task cheap. Append each to `studio/ideas/IDEAS.md` with ID `I-NNN`, a one-line problem statement, the target customer and the signal (with URL) that suggested it.
@@ -65,8 +66,11 @@ SOURCE -> SCREEN -> (per shortlisted idea) MARKET -> FINANCE -> THESIS + SCORECA
 3. **Market** (market-analyst): write `market.md` for the venture (format below).
 4. **Finance** (finance-analyst): read `idea.md` and `market.md`, write `finance.md` (format below).
 5. **Thesis + scorecard** (venture-scout): read all three files, write `thesis.md`: a one-page summary plus the Scorecard. Scores come from the evidence in `market.md` and `finance.md`, not from the scout's own enthusiasm.
-6. **Gate brief** (venture-scout): write `studio/decisions/DEC-NNN-<venture-slug>-discover-gate.md` with options Go / Park / Kill and a recommendation that follows the Gate Rule. Set the venture to `Gate` in `PORTFOLIO.md`.
-7. **Portfolio**: after the stakeholder answers, venture-scout records the decision in the brief (`DECIDED: <option>`) and sets the venture to `Go`, `Parked` or `Killed` in `PORTFOLIO.md`.
+6. **Challenge** (skeptic): read `idea.md`, `market.md`, `finance.md` and `thesis.md`, then write `challenge.md` (format below) with the verdict `AGREE` or `DISPUTE` and the skeptic's own score for every dimension. The skeptic never edits the other files.
+   - On `DISPUTE`, the venture-scout may revise `thesis.md` **once**, answering each disputed point with evidence, and the skeptic then appends a `## Round 2` to `challenge.md` with its final verdict and scores. There is no third round.
+   - If the skeptic finds a cited source that does not exist or does not say what the file claims, the analyst who wrote it fixes that claim before the gate brief, and the fix is listed in `challenge.md`.
+7. **Gate brief** (venture-scout): write `studio/decisions/DEC-NNN-<venture-slug>-discover-gate.md` with options Go / Park / Kill and a recommendation that follows the Gate Rule. Set the venture to `Gate` in `PORTFOLIO.md`.
+8. **Portfolio**: after the stakeholder answers, venture-scout records the decision in the brief (`DECIDED: <option>`) and sets the venture to `Go`, `Parked` or `Killed` in `PORTFOLIO.md`.
 
 **Orchestrator** (the main session, which plays studio manager):
 - Invoke ONE agent per step and wait for it to finish. Different ventures may run one after another; never run two steps of the same venture in parallel.
@@ -75,7 +79,7 @@ SOURCE -> SCREEN -> (per shortlisted idea) MARKET -> FINANCE -> THESIS + SCORECA
 - When all shortlisted ventures have a gate brief, stop and show the stakeholder the portfolio and the briefs waiting for an answer.
 - Don't do an agent's job yourself.
 
-**Quick check**: the stakeholder may say "check: <idea>". Skip Source and Screen; venture-scout creates the venture directly and steps 3-6 run as usual.
+**Quick check**: the stakeholder may say "check: <idea>". Skip Source and Screen; venture-scout creates the venture directly and steps 3-7 run as usual.
 
 ## Evidence Rules
 - Each `market.md` and `finance.md` claim is tagged: `[S1]`-style citation to a numbered source list at the bottom of the file, or `ASSUMPTION`.
@@ -104,6 +108,7 @@ Each dimension is scored 1-5 with a one-line justification and its sources:
 - **Go**: no hard fail, total 25/35 or more, and no dimension scored 1.
 - **Park**: no hard fail, total 20-24, or one dimension at 1 that cheap validation could change.
 - **Kill**: any hard fail, or total below 20.
+The Gate Rule uses the **final score**: for each dimension, the lower of the scout's and the skeptic's final scores. A hard fail found by either one counts.
 The scout may recommend differently from the rule only with a written reason in the brief; the rule's result is always shown.
 
 ## Decision Brief
@@ -116,13 +121,14 @@ Status: PENDING
 Venture: V-NNN-<slug>
 Why this needs you: <one sentence>
 In one paragraph: <the idea, who pays, why now>
-Score: <total>/35 -> Gate Rule says <Go | Park | Kill>
+Score: scout <total>/35, skeptic <total>/35, final <total>/35 -> Gate Rule says <Go | Park | Kill>
+Skeptic: <AGREE | DISPUTE>, <its strongest point in one sentence>
 | Option | Money needed next | Time needed next | What happens if it's wrong | Easy to undo? |
 |---|---|---|---|---|
 | A Go to Validate | ... | ... | ... | ... |
 | B Park | ... | ... | ... | ... |
 | C Kill | ... | ... | ... | ... |
-Biggest reasons it could fail: <top 3, from market.md>
+Biggest reasons it could fail: <top 3, from market.md and challenge.md>
 Recommendation: <option and the business reason>
 Reply with: A, B or C
 ```
@@ -141,6 +147,7 @@ studio/
     market.md                     market research with sources (market-analyst)
     finance.md                    economics with sources and assumptions (finance-analyst)
     thesis.md                     one-page summary and scorecard (venture-scout)
+    challenge.md                  source checks, counter-evidence, re-scoring, verdict (skeptic)
 ```
 
 **Venture statuses** (in `PORTFOLIO.md`): `Researching`, `Gate`, `Go`, `Parked`, `Killed`, `Blocked`.
@@ -171,6 +178,15 @@ studio/
 9. Sources and assumptions: numbered list.
 
 **`thesis.md`**: `Status:` line; one-page summary (problem, customer, solution, why now, how it makes money, top risks); the Scorecard table; hard-fail check; Gate Rule result.
+
+**`challenge.md`** sections, in order:
+1. Verdict: `AGREE` or `DISPUTE`, with one sentence why.
+2. Source check: the sources behind the 3 highest scores, each opened and marked `CONFIRMED`, `MISREAD` (says something different) or `NOT FOUND`.
+3. Counter-evidence: what the skeptic found against the idea that `market.md` missed, each with a source.
+4. Re-scoring: table of every dimension with the scout's score, the skeptic's score and the reason for any difference.
+5. Hard fails: any the scout missed.
+6. Questions the gate decision should not ignore.
+7. Sources: numbered list with URL and access date.
 
 ## Search Rule (all agents)
 - For web research, use the web search and page fetch tools, and open the primary source rather than trusting a search snippet.

@@ -2,7 +2,7 @@
 
 ## Setup
 1. Create an empty folder for your studio (not inside a product repository) and copy everything in the template folder (`dist/claude/`, the parent of this `studio/` folder), including the hidden `.claude/`, into it.
-2. Claude Code loads `CLAUDE.md` and the subagents in `.claude/agents/` automatically. Run `/agents` to confirm all three are listed.
+2. Claude Code loads `CLAUDE.md` and the subagents in `.claude/agents/` automatically. Run `/agents` to confirm all four are listed.
 
 ## Prompts
 **1. Kickoff** (once per studio):
@@ -33,6 +33,7 @@ DEC-NNN: A
 {{include shared/docs/WORKFLOW.md}}
 
 ## Claude Code notes
-- All three agents use `model: opus`, because research and judgment are the whole job.
+- All four agents use `model: opus`, because research and judgment are the whole job.
+- For a skeptic from a different vendor, run the challenge step in another tool (for example the Codex or OpenCode template) on the same studio folder.
 - Agents have every tool available. To restrict one, add a `tools:` list to its front matter.
 - To run unattended (for example overnight), use a permission mode that skips prompts, inside git so you can undo. Agents never spend money or contact anyone, and gate briefs wait for you.
